@@ -13,20 +13,24 @@
 <script type="text/javascript" src="$sbRoot/js/displayShow.js"></script>
 <script type="text/javascript" src="$sbRoot/js/plotTooltip.js"></script>
 
-Airs: $show.airs on $show.network<br />
-Status: $show.status<br />
+<div id="showStaticInfo">
+	Airs: $show.airs on $show.network<br />
+	Status: $show.status<br />
 
-#if $showLoc[1]:
-Location: $showLoc[0]
-#else:
-<span style="color: red;">Location: $showLoc[0]</span> (dir is missing)
-#end if
-<br />
+	#if $showLoc[1]:
+	Location: $showLoc[0]
+	#else:
+	<span style="color: red;">Location: $showLoc[0]</span> (dir is missing)
+	#end if
+	<br />
 
-Quality: $qualityStrings[int($show.quality)]<br />
-Season Folders: <img src="$sbRoot/images/#if $show.seasonfolders == 1 then "yes.gif\" alt=\"Y" else "no.gif\" alt=\"N"#" width="16" height="16"><br />
+	Quality: $qualityStrings[int($show.quality)]<br />
+	Season Folders: <img src="$sbRoot/images/#if $show.seasonfolders == 1 then "yes.gif\" alt=\"Y" else "no.gif\" alt=\"N"#" width="16" height="16"><br />
 
-Active: <img src="$sbRoot/images/#if int($show.paused) == 0 then "yes.gif\" alt=\"Y" else "no.gif\" alt=\"N"#" width="16" height="16"><br />
+	Active: <img src="$sbRoot/images/#if int($show.paused) == 0 then "yes.gif\" alt=\"Y" else "no.gif\" alt=\"N"#" width="16" height="16"><br />
+
+	<a href="editShow?show=$show.tvdbid" id="editShowButton" style="text-decoration:underline">Edit</a>
+</div>
 
 <br />
 

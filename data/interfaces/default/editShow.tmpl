@@ -9,29 +9,31 @@
 #import os.path
 #include $os.path.join($sickbeard.PROG_DIR, "data/interfaces/default/inc_top.tmpl")
 
-Airs: $show.airs<br />
-Status: $show.status<br />
-<br />
-<form action="editShow" method="post">
-<input type="hidden" name="show" value="$show.tvdbid">
-Location: <input type="text" name="location" id="location" value="$show._location" size="50"><br />
-Quality: <select name="quality">
-#for $quality in $qualities:
-#if $show.quality == $quality
-#set $blah = "SELECTED"
-#else
-#set $blah = ""
-#end if
-<option value="$quality" $blah>$qualityStrings[$quality]
-#end for
-</select><br />
-Use Season Folders: <input type="checkbox" name="seasonfolders" #if $show.seasonfolders == 1 then "CHECKED" else ""#><br /><br />
-Paused: <input type="checkbox" name="paused" #if $show.paused == 1 then "CHECKED" else ""#><br /><br />
-<input type="submit" value="Submit">
-</form>
+<div id="showEditInfo">
+	Airs: $show.airs<br />
+	Status: $show.status<br />
+	<br />
+	<form action="editShow" method="post">
+	<input type="hidden" name="show" value="$show.tvdbid">
+	Location: <input type="text" name="location" id="location" value="$show._location" size="50"><br />
+	Quality: <select name="quality">
+	#for $quality in $qualities:
+	#if $show.quality == $quality
+	#set $blah = "SELECTED"
+	#else
+	#set $blah = ""
+	#end if
+	<option value="$quality" $blah>$qualityStrings[$quality]
+	#end for
+	</select><br />
+	Use Season Folders: <input type="checkbox" name="seasonfolders" #if $show.seasonfolders == 1 then "CHECKED" else ""#><br /><br />
+	Paused: <input type="checkbox" name="paused" #if $show.paused == 1 then "CHECKED" else ""#><br /><br />
+	<input type="submit" value="Submit">
+	</form>
 
-<script type="text/javascript" charset="utf-8">
-    jQuery('#location').fileBrowser({ title: 'Select Show Location' });
-</script>
+	<script type="text/javascript" charset="utf-8">
+	    jQuery('#location').fileBrowser({ title: 'Select Show Location' });
+	</script>
+</div>
 
 #include $os.path.join($sickbeard.PROG_DIR, "data/interfaces/default/inc_bottom.tmpl")
